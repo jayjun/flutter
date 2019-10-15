@@ -90,7 +90,6 @@ class SystemUiOverlayStyle {
     this.systemNavigationBarDividerColor,
     this.systemNavigationBarIconBrightness,
     this.statusBarColor,
-    this.statusBarBrightness,
     this.statusBarIconBrightness,
   });
 
@@ -114,14 +113,9 @@ class SystemUiOverlayStyle {
   /// Only honored in Android version M and greater.
   final Color statusBarColor;
 
-  /// The brightness of top status bar.
-  ///
-  /// Only honored in iOS.
-  final Brightness statusBarBrightness;
-
   /// The brightness of the top status bar icons.
   ///
-  /// Only honored in Android version M and greater.
+  /// Only honored in iOS and Android version M and greater.
   final Brightness statusBarIconBrightness;
 
   /// System overlays should be drawn with a light color. Intended for
@@ -132,7 +126,6 @@ class SystemUiOverlayStyle {
     statusBarColor: null,
     systemNavigationBarIconBrightness: Brightness.light,
     statusBarIconBrightness: Brightness.light,
-    statusBarBrightness: Brightness.dark,
   );
 
   /// System overlays should be drawn with a dark color. Intended for
@@ -143,7 +136,6 @@ class SystemUiOverlayStyle {
     statusBarColor: null,
     systemNavigationBarIconBrightness: Brightness.light,
     statusBarIconBrightness: Brightness.dark,
-    statusBarBrightness: Brightness.light,
   );
 
   /// Convert this event to a map for serialization.
@@ -152,7 +144,6 @@ class SystemUiOverlayStyle {
       'systemNavigationBarColor': systemNavigationBarColor?.value,
       'systemNavigationBarDividerColor': systemNavigationBarDividerColor?.value,
       'statusBarColor': statusBarColor?.value,
-      'statusBarBrightness': statusBarBrightness?.toString(),
       'statusBarIconBrightness': statusBarIconBrightness?.toString(),
       'systemNavigationBarIconBrightness': systemNavigationBarIconBrightness?.toString(),
     };
@@ -166,7 +157,6 @@ class SystemUiOverlayStyle {
     Color systemNavigationBarColor,
     Color systemNavigationBarDividerColor,
     Color statusBarColor,
-    Brightness statusBarBrightness,
     Brightness statusBarIconBrightness,
     Brightness systemNavigationBarIconBrightness,
   }) {
@@ -175,7 +165,6 @@ class SystemUiOverlayStyle {
       systemNavigationBarDividerColor: systemNavigationBarDividerColor ?? this.systemNavigationBarDividerColor,
       statusBarColor: statusBarColor ?? this.statusBarColor,
       statusBarIconBrightness: statusBarIconBrightness ?? this.statusBarIconBrightness,
-      statusBarBrightness: statusBarBrightness ?? this.statusBarBrightness,
       systemNavigationBarIconBrightness: systemNavigationBarIconBrightness ?? this.systemNavigationBarIconBrightness,
     );
   }
@@ -186,7 +175,6 @@ class SystemUiOverlayStyle {
       systemNavigationBarColor,
       systemNavigationBarDividerColor,
       statusBarColor,
-      statusBarBrightness,
       statusBarIconBrightness,
       systemNavigationBarIconBrightness,
     );
@@ -201,7 +189,6 @@ class SystemUiOverlayStyle {
       && typedOther.systemNavigationBarDividerColor == systemNavigationBarDividerColor
       && typedOther.statusBarColor == statusBarColor
       && typedOther.statusBarIconBrightness == statusBarIconBrightness
-      && typedOther.statusBarBrightness == statusBarBrightness
       && typedOther.systemNavigationBarIconBrightness == systemNavigationBarIconBrightness;
   }
 }

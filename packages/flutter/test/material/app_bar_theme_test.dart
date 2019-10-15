@@ -28,7 +28,7 @@ void main() {
     final RichText actionIconText = _getAppBarIconRichText(tester);
     final DefaultTextStyle text = _getAppBarText(tester);
 
-    expect(SystemChrome.latestStyle.statusBarBrightness, Brightness.dark);
+    expect(SystemChrome.latestStyle.statusBarIconBrightness, Brightness.light);
     expect(widget.color, Colors.blue);
     expect(widget.elevation, 4.0);
     expect(iconTheme.data, const IconThemeData(color: Colors.white));
@@ -39,6 +39,9 @@ void main() {
 
   testWidgets('AppBar uses values from AppBarTheme', (WidgetTester tester) async {
     final AppBarTheme appBarTheme = _appBarTheme();
+    final Brightness oppositeBrightness = appBarTheme.brightness == Brightness.light
+      ? Brightness.dark
+      : Brightness.light;
 
     await tester.pumpWidget(MaterialApp(
       theme: ThemeData(appBarTheme: appBarTheme),
@@ -56,7 +59,7 @@ void main() {
     final RichText actionIconText = _getAppBarIconRichText(tester);
     final DefaultTextStyle text = _getAppBarText(tester);
 
-    expect(SystemChrome.latestStyle.statusBarBrightness, appBarTheme.brightness);
+    expect(SystemChrome.latestStyle.statusBarIconBrightness, oppositeBrightness);
     expect(widget.color, appBarTheme.color);
     expect(widget.elevation, appBarTheme.elevation);
     expect(iconTheme.data, appBarTheme.iconTheme);
@@ -67,6 +70,7 @@ void main() {
 
   testWidgets('AppBar widget properties take priority over theme', (WidgetTester tester) async {
     const Brightness brightness = Brightness.dark;
+    const Brightness oppositeBrightness = Brightness.light;
     const Color color = Colors.orange;
     const double elevation = 3.0;
     const IconThemeData iconThemeData = IconThemeData(color: Colors.green);
@@ -96,7 +100,7 @@ void main() {
     final RichText actionIconText = _getAppBarIconRichText(tester);
     final DefaultTextStyle text = _getAppBarText(tester);
 
-    expect(SystemChrome.latestStyle.statusBarBrightness, brightness);
+    expect(SystemChrome.latestStyle.statusBarIconBrightness, oppositeBrightness);
     expect(widget.color, color);
     expect(widget.elevation, elevation);
     expect(iconTheme.data, iconThemeData);
@@ -129,6 +133,9 @@ void main() {
 
   testWidgets('AppBarTheme properties take priority over ThemeData properties', (WidgetTester tester) async {
     final AppBarTheme appBarTheme = _appBarTheme();
+    final Brightness oppositeBrightness = appBarTheme.brightness == Brightness.light
+      ? Brightness.dark
+      : Brightness.light;
     final ThemeData themeData = _themeData().copyWith(appBarTheme: _appBarTheme());
 
     await tester.pumpWidget(MaterialApp(
@@ -146,7 +153,7 @@ void main() {
     final RichText actionIconText = _getAppBarIconRichText(tester);
     final DefaultTextStyle text = _getAppBarText(tester);
 
-    expect(SystemChrome.latestStyle.statusBarBrightness, appBarTheme.brightness);
+    expect(SystemChrome.latestStyle.statusBarIconBrightness, oppositeBrightness);
     expect(widget.color, appBarTheme.color);
     expect(widget.elevation, appBarTheme.elevation);
     expect(iconTheme.data, appBarTheme.iconTheme);
@@ -157,6 +164,9 @@ void main() {
 
   testWidgets('ThemeData properties are used when no AppBarTheme is set', (WidgetTester tester) async {
     final ThemeData themeData = _themeData();
+    final Brightness oppositeBrightness = themeTheme.brightness == Brightness.light
+      ? Brightness.dark
+      : Brightness.light;
 
     await tester.pumpWidget(MaterialApp(
       theme: themeData,
@@ -173,7 +183,7 @@ void main() {
     final RichText actionIconText = _getAppBarIconRichText(tester);
     final DefaultTextStyle text = _getAppBarText(tester);
 
-    expect(SystemChrome.latestStyle.statusBarBrightness, themeData.brightness);
+    expect(SystemChrome.latestStyle.statusBarIconBrightness, oppositeBrightness);
     expect(widget.color, themeData.primaryColor);
     expect(widget.elevation, 4.0);
     expect(iconTheme.data, themeData.primaryIconTheme);

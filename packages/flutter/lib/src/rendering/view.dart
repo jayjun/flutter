@@ -257,7 +257,6 @@ class RenderView extends RenderObject with RenderObjectWithChildMixin<RenderBox>
     // If there are no overlay styles in the UI don't bother updating.
     if (upperOverlayStyle != null || lowerOverlayStyle != null) {
       final SystemUiOverlayStyle overlayStyle = SystemUiOverlayStyle(
-        statusBarBrightness: upperOverlayStyle?.statusBarBrightness,
         statusBarIconBrightness: upperOverlayStyle?.statusBarIconBrightness,
         statusBarColor: upperOverlayStyle?.statusBarColor,
         systemNavigationBarColor: lowerOverlayStyle?.systemNavigationBarColor,

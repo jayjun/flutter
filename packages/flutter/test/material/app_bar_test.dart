@@ -1402,7 +1402,6 @@ void main() {
 
     expect(darkTheme.primaryColorBrightness, Brightness.dark);
     expect(SystemChrome.latestStyle, const SystemUiOverlayStyle(
-      statusBarBrightness: Brightness.dark,
       statusBarIconBrightness: Brightness.light,
     ));
   });
@@ -1418,7 +1417,6 @@ void main() {
 
     expect(lightTheme.primaryColorBrightness, Brightness.light);
     expect(SystemChrome.latestStyle, const SystemUiOverlayStyle(
-      statusBarBrightness: Brightness.light,
       statusBarIconBrightness: Brightness.dark,
     ));
   });
